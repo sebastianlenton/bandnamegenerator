@@ -1,19 +1,27 @@
-var prefixes = [ 'the', 'thee', 'you', 'my', '', 'some', 'young', 'old', 'our', 'your', 'mr', 'mrs', 'miss', 'new' ];
+"use strict";
 
-var midWords = [
+var prefixesSing = [ 'lord', 'mr', 'mrs', 'miss', 'king', 'queen', 'sir', 'lady', 'ms', 'master', 'captain', 'that' ];
+//noun has to be singular
+
+var prefixesPlu = [ 'we', 'we, the', 'us', 'those' ];
+//noun has to be plural
+
+var prefixesAny = [ 'the', 'thee', 'you', 'my', 'some', 'our', 'your', 'any', 'our saviour, the' ];
+//noun can be either (choose randomly at end)
+
+var adjectives1 = [
+	'young', 'old', 'new', 'brand new', 'original', 'hot', 'cold', 'red', 'blue', 'green', 'yellow', 'pink', 'orange', 'white', 'black', 'grey', 'slow', 'fast', 'retro', 'used'
+];
+
+var adjectives2 = [
 	'mighty',
-	'blue',
 	'ugly',
 	'smashing',
 	'flaming',
 	'original',
 	'marble',
-	'red',
 	'huge',
 	'raving',
-	'slow',
-	'fast',
-	'rapid',
 	'filthy',
 	'vast',
 	'tiny',
@@ -22,11 +30,20 @@ var midWords = [
 	'french',
 	'free',
 	'neon',
+	'rapid',
 	'boomtown',
+	'frosty',
+	'sweaty',
+	'muscular',
+	'beautiful',
+	'pretty',
+	'sonic',
+	'smooth',
 	'ragged',
 	'young',
 	'old',
 	'gloved',
+	'oblivious',
 	'silky',
 	'imaginary',
 	'ghostly',
@@ -59,10 +76,11 @@ var midWords = [
 	'raw',
 	'fictional',
 	'howling',
-	'wild'
+	'wild',
+	'sleepy',
 ];
 
-var lastWords = [
+var nouns = [
 	[ 'bee' ],
 	[ 'cloud' ],
 	[ 'spaniard' ],
@@ -112,12 +130,17 @@ var lastWords = [
 	[ 'brother' ],
 	[ 'sister' ],
 	[ 'mother' ],
+	[ 'cat' ],
 	[ 'father' ],
+	[ 'boyfriend' ],
+	[ 'girlfriend' ],
+	[ 'housemate' ],
 	[ 'priest' ],
 	[ 'god' ],
 	[ 'wizard' ],
 	[ 'vampire' ],
 	[ 'frisbee' ],
+	[ 'train' ],
 	[ 'tramp' ],
 	[ 'dynamite' ],
 	[ 'field' ],
@@ -130,6 +153,39 @@ var lastWords = [
 	[ 'head' ],
 	[ 'leg' ],
 	[ 'bike' ],
+	[ 'mortal' ],
+	[ 'fighter' ],
+	[ 'truck driver' ],
+	[ 'driver' ],
+	[ 'sailor' ],
+	[ 'barbarian' ],
+	[ 'wrestler' ],
+	[ 'eagle' ],
+	[ 'falcon' ],
+	[ 'bear' ],
+	[ 'acrobat' ],
+	[ 'kid' ],
+	[ 'robot' ],
+	[ 'goat' ],
+	[ 'youth' ],
+	[ 'girl' ],
+	[ 'twin' ],
+	[ 'cripple' ],
+	[ 'flower' ],
+	[ 'crayon' ],
+	[ 'lollipop' ],
+	[ 'umbrella' ],
+	[ 'police', 'police' ],
+	[ '60s', '60s' ],
+	[ '70s', '70s' ],
+	[ '80s', '80s' ],
+	[ '90s', '90s' ],
+	[ 'fish', 'fishes' ],
+	[ 'child', 'children' ],
+	[ 'woman', 'women' ],
+	[ 'elf', 'elves' ],
+	[ 'dwarf', 'dwarves' ],
+	[ 'popcorn', 'popcorn' ],
 	[ 'city', 'cities' ],
 	[ 'fortress', 'fortresses' ],
 	[ 'octopus', 'octopuses' ],
@@ -147,33 +203,94 @@ var lastWords = [
 	[ 'bitch', 'bitches' ]
 ];
 
-function generateName() {
-	var isPlural = Math.round( Math.random());
+function getCombs() {
+	//note this is completely inaccurate of the real combinations
+	return ( prefixesSing.length * adjectives1.length * adjectives2.length * nouns.length ) * 2;
+}
 
-	var bandName = prefixes[ Math.floor( Math.random() * prefixes.length ) ] + ' ' + midWords[ Math.floor( Math.random() * midWords.length ) ] + ' ';
-	
-	var theLastWord =  lastWords[ Math.floor( Math.random() * lastWords.length ) ];
-	
-	if( isPlural ) {
-		console.log( 'plural');
-		
-		if( theLastWord.length > 1 ) {
-			bandName += theLastWord[1];
-		} else {
-			bandName += theLastWord + 's';
-		}
-		
-		//console.log( theLastWord.length );
+function getPlularity() {
+	return getRandomNum( 2 );
+}
+
+function getRandomWord( words ) {
+	return words[ getRandomNum( words.length ) ];
+}
+
+function getRandomNum( limit ) {
+	if( limit ) {
+		return Math.floor( Math.random() * limit )
 	} else {
-		bandName += theLastWord[0];
+		return Math.round( Math.random() );
+	}
+}
+
+function loopArrayString( words ) {
+	var strWords = '';
+	for( var i = 0; i < words.length; i++ ) {
+		strWords += words[ i ] + ' ';
 	}
 	
-	return bandName;
-//	console.log( prefixes.length );
-	//console.log( midWords[1][0] );
+	return strWords;
+}
+
+function getNounPluralised( word, pluralise ) {
+	var wordPluralised;
+	
+	if( pluralise ) {
+		if( word.length > 1 ) {
+			wordPluralised = word[1];
+		} else {
+			wordPluralised = word + 's';
+		}
+	} else {
+		wordPluralised = word[0];
+	}
+	
+	return wordPluralised;
+};
+
+function generateName() {										//don't think there's a "no prefix" option
+	var isPlural = getPlularity();
+
+	var words = [];
+
+	if( getRandomNum( 3 ) == 0 ) {
+		if( isPlural ) {
+			if( getRandomNum( 4 ) == 0 ) {
+				words.push( getRandomWord( prefixesAny ) );
+			} else {
+				words.push( getRandomWord( prefixesPlu ) );
+			}
+		} else if( !isPlural ) {
+			if( getRandomNum( 4 ) == 0 ) {
+				words.push( getRandomWord( prefixesAny ) );
+			} else {
+				words.push( getRandomWord( prefixesSing ) );
+			}
+		} else {
+			console.log( 'something terrible has happened in adding prefix' );
+		}
+	} else if( getRandomNum( 3 ) == 1 ) {
+		words.push( 'the' );
+	}
+	
+	if( getRandomNum( 4 ) > 1 ) {															// 1/2 chance of pushing on an adj 1
+		words.push( getRandomWord( adjectives1 ) );
+	}
+	
+	if( getRandomNum( 4 ) > 1 ) {															// 1/2 chance of pushing on an adj 1
+		words.push( getRandomWord( adjectives2 ) );
+	}
+	
+	var noun = getRandomWord( nouns );
+	
+	words.push( getNounPluralised( noun, isPlural ) );
+	
+	return loopArrayString( words );
 }
 
 jQuery(document).ready(function($) {
-	console.log( ( prefixes.length * midWords.length * lastWords.length ) * 2 ) ;
 	$( 'h2' ).text(generateName());
+	
+	console.log( getCombs() );
 });
