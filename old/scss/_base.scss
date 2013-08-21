@@ -64,21 +64,18 @@ textarea {
 /*********************
 LAYOUT & GRID STYLES
 *********************/
-
-html {
-
+header {
+	margin-top:1.5em;
 }
 
-.action {
-	min-height:12.3em;
-}
-
-.controls {
-	//position:absolute;
-	//bottom:0;
-	//height:40%;
-	text-align:center;
-	//width:100%;
+.wrap {
+	padding-left:4%;
+	padding-right:4%;
+	margin:0 auto;
+	
+	&.up1024 {
+		padding:0;
+	}
 }
 
 /*********************
@@ -87,6 +84,11 @@ LINK STYLES
 
 a, a:visited {
 	color:$link-color;
+
+	/* on hover */
+	&:hover, &:focus {
+		color:$link-hover;
+	}
 
 	/* on click */
 	&:active {
@@ -100,7 +102,7 @@ a, a:visited {
 		so it basically works like the :hover selector
 		for mobile devices.
 		*/
-		-webkit-tap-highlight-color : rgba( 0, 0, 0, 0 );
+		-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
 	}
 }
 
@@ -108,16 +110,13 @@ a, a:visited {
 TYPE
 *********************/
 
-html {
-
-}
-
 body {
+	margin:2em 0.5em 3em 0.5em;
 	font-size: 16px;
 	line-height: 1.5;
 	font-family: $sans-serif;
-	background:$background;
-	margin:1.5em .5em 0 .5em;
+	background:$background;	
+	text-align: center;
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
@@ -129,6 +128,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 	*/
 
 	font-weight:bold;
+	text-align: center;
 }
 
 h1,h2,h3,h4,h5,p,ul,ol,li,blockquote,hr {						
@@ -138,20 +138,21 @@ h1,h2,h3,h4,h5,p,ul,ol,li,blockquote,hr {
 h1, .h1 {
 	font-size:0.8em;
 	text-align: center;
-	margin-bottom:0.3em;
-	line-height:1.5;
+	margin:0 0 1.185em 0;
+	line-height:1.37em;
 	font-family:sans-serif;
-	opacity:0.5;
+	opacity:0.99;
 }
 
 h2, .h2 {
-	text-align: center;
-	font-size:2.1em;
-	margin-bottom:0;
-	line-height:1.3;
-	//text-shadow:0 0 2px rgba( 0, 0, 0, 0.5 );
-	text-transform: uppercase;
-	letter-spacing: -1px;
+	font-size:2.45em;
+	line-height:1.2;
+	font-weight:bold;
+	min-height:2.39em;
+	
+	//temp?
+	max-width:10em;
+	margin:0 auto 0.8em auto;
 }
 
 h3, .h3 {
@@ -220,8 +221,29 @@ LOGO STYLES
 /*********************
 NAVIGATION STYLES
 *********************/
-
-
+nav {
+	background:$nav;
+	margin-bottom:1.5em;
+	&.horiz {
+		ul {
+			margin:0;
+			padding:0;
+			overflow:hidden;
+			text-align: center;
+			li {
+				display:inline-block;
+				margin:0;
+				padding:0;
+				a {
+					display:block;
+					color:$nav-link;
+					padding:0.91em;
+					font-size:.84em;
+				}
+			}
+		}
+	}
+}
 
 /*********************
 SIDEBARS & ASIDES
@@ -236,6 +258,20 @@ IMAGES
 FOOTER STYLES
 *********************/
 
+footer {
+	background:$footer;
+	color:$footer-text;
+	overflow:hidden;
+	padding-top:1.5em;
+	padding-bottom:1.5em;
+	text-align:center;
+	
+	
+	
+	p.meta {
+		margin-bottom:2.15em;
+	}
+}
 
 	
 /*********************
@@ -253,26 +289,22 @@ BUTTONS
 *********************/
 
 .button, .button:visited {
-	padding:.6em .8em 0.76em  0.8em;
+	padding:0.76em  0.8em;
 	display: inline-block;
 	font-weight: bold;
 	text-decoration: none;
 	text-align:center;
-	margin-bottom:0.5em;
 
 	cursor: pointer;
-	background:$red;
+	background:$buttonBg;
 	color:$button-link;
 
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	
-	&.firefoxInstall {
-		background:$blue;
-		display:none;
+	&:hover, &:focus {
+		background:$buttonBg-hover;
+		color:$button-link-hover;
+	}
+
+	&:active {
+		//@include css-gradient(darken($link-color, 5%), $link-color);
 	}
 }

@@ -16,13 +16,18 @@ GENERAL STYLES
 LAYOUT & GRID STYLES
 *********************/
 
-
+.action {
+	min-height:0;
+}
 
 /*********************
 TYPE
 *********************/
 
-
+h2 {
+	font-size:2em;
+	margin-bottom:1em;
+}
 
 /*********************
 HEADER STYLES
@@ -55,5 +60,9 @@ FOOTER STYLES
 
 	
 /*********************
-TRANSITIONS
+BUTTONS
 *********************/
+
+.button, .button:visited {
+	margin-bottom:0;
+}

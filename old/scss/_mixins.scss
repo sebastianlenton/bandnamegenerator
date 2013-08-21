@@ -40,7 +40,6 @@ $offBlack:			#2f4556;
 $white:             #fff;
 $offWhite:			#fbfbfa;
 $red:				#ff5555;
-$blue:				#1384bc;
 
 /*
 Here's a great tutorial on how to
@@ -55,6 +54,12 @@ ELEMENT COLOURS
 
 $background:		$offWhite;
 
+$nav:				$red;
+$nav-link:			$white;
+
+$footer:			$red;
+$footer-text:		$offWhite;
+
 $hr:				$red;
 
 $text:				$offBlack;
@@ -64,7 +69,10 @@ $link-hover:		$red;
 $selection:			$red;
 $selection-text:	$white;
 
+$buttonBg:			$red;
 $button-link:		$white;
+$buttonBg-hover:	lighten( $red, 8% );
+$button-link-hover:	lighten( $white, 8% );
 
 /*********************
 TYPOGRAPHY
@@ -135,6 +143,7 @@ USAGE: @include transition(all 0.2s ease-in-out);
   transition: $transition;
 }
 
+//what with the one above, do I still need this?
 @mixin rotate( $deg ) {
 	-moz-transform:rotate( $deg );
 	-webkit-transform: rotate( $deg );

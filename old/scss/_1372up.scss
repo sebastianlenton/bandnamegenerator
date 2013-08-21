@@ -16,22 +16,18 @@ GENERAL STYLES
 LAYOUT & GRID STYLES
 *********************/
 
-.action {
-	min-height:7em;
+.wrap, 	.wrap.up1024 {
+	width:1262px;
+	padding-left:0;
+	padding-right:0;
 }
 
 /*********************
 TYPE
 *********************/
-h1 {
-	margin-bottom:0.5em;
-}
-h2 {
-	padding:0 10%;
-}
 
 body {
-	font-size:25px;
+	font-size:26px;
 }
 
 /*********************
@@ -65,8 +61,5 @@ FOOTER STYLES
 
 	
 /*********************
-BUTTONS
+TRANSITIONS
 *********************/
-.button {
-	font-size:75%;
-}

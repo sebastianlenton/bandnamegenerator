@@ -1,12 +1,20 @@
 "use strict";
 
+var blacklistAll = [ 'sonic youth', 'flaming lips', 'smashing pumpkins', 'dirty projectors', 'cold cave', 'young marble giants' ];
+
+var blacklistSingular = [ 'baroness', 'stars', 'killers', 'the killers', 'the police' ];
+
+
+
+
+
 var prefixesSing = [ 'lord', 'mr', 'mrs', 'miss', 'king', 'queen', 'sir', 'lady', 'ms', 'master', 'captain', 'that', 'every', 'just one' ];
 //noun has to be singular
 
 var prefixesPlu = [ 'we', 'we, the', 'us', 'those', 'all the', 'many', 'lots of', 'more', 'less', 'we love', 'i love', 'remove the', 'add more' ];
 //noun has to be plural
 
-var prefixesAny = [ 'the', 'thee', 'you', 'my', 'some', 'our', 'your', 'any', 'the last ', 'our saviour, the', 'their', 'society\'s', 'the community\'s', 'the national', 'the only', 'my family\'s' ];
+var prefixesAny = [ 'the', 'thee', 'you', 'my', 'some', 'our', 'your', 'any', 'our saviour, the', 'their', 'society\'s', 'the community\'s', 'the national', 'the only', 'my family\'s' ];
 //noun can be either (choose randomly at end)
 
 var adjectives1 = [
@@ -29,6 +37,8 @@ var adjectives2 = [
 	'sexy',
 	'killer',
 	'soft',
+//	'french',
+//	'spanish',
 	'central',
 	'free',
 	'neon',
@@ -247,7 +257,6 @@ var nouns = [
 	[ 'bat' ],
 	[ 'castle' ],
 	[ 'skull' ],
-	[ 'miracle' ],
 	[ 'heaven', 'heaven' ],
 	[ 'hell', 'hell' ],
 	[ 'bread', 'bread' ],
@@ -278,6 +287,8 @@ var nouns = [
 	[ 'man', 'men' ],
 	[ 'sportsman', 'sportsmen' ],
 	[ 'sportswoman', 'sportswomen' ],
+	[ 'businessman', 'businessmen' ],
+	[ 'businesswoman', 'businesswomen' ],
 	[ 'person', 'people' ],
 	[ 'fox', 'foxes' ],
 	[ 'spaceman', 'spacemen' ],
@@ -381,7 +392,7 @@ function generateName() {
 }
 
 //interaction stuff
-$( '.button.generate').tap( function() {
+$( '.button.generate').click( function() {
 	$( 'h2' ).text( generateName() );
 });
 
@@ -390,7 +401,3 @@ jQuery(document).ready(function($) {
 	
 	console.log( getCombs() );
 });
-
-function wut() {
-	alert( 'firefox' );
-}

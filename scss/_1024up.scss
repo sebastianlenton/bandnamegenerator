@@ -16,37 +16,14 @@ GENERAL STYLES
 LAYOUT & GRID STYLES
 *********************/
 
-.wrap {
-	&.up1024 {
-		padding-left:4%;
-		padding-right:4%;
-	}
-}
-
-//2 col - left wide, right side
-.w66 {
-	width:62.6%;
-	float:left;
-}
-
-.w33 {
-	width:33.3%;
-	float:right;
-}
-
-.logo {
-	float:left;
-}
-
-nav {
-	float:right;
-}
 
 /*********************
 TYPE
 *********************/
 
-
+body {
+	font-size:33px;
+}
 
 /*********************
 HEADER STYLES
@@ -64,11 +41,7 @@ LOGO STYLES
 NAVIGATION STYLES
 *********************/
 
-//header {
-	nav {
 
-	}
-//}
 
 /*********************
 SIDEBARS & ASIDES
@@ -85,3 +58,12 @@ FOOTER STYLES
 /*********************
 TRANSITIONS
 *********************/
+
+
+
+/*********************
+BUTTONS
+*********************/
+.button {
+	font-size:60%;
+}
