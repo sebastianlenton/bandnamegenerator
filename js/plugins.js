@@ -1,3 +1,35 @@
+function doFirefoxButtonStuff(){
+	if( navigator.mozApps != undefined ) {
+		$( '#install' ).css( 'display', 'inline-block' );
+		function install(ev) {
+			ev.preventDefault();
+			// define the manifest URL
+			var manifest_url = "http://bandnames.sebastianlenton.com/manifest.webapp";
+			// install the app
+			var myapp = navigator.mozApps.install(manifest_url);
+			
+			myapp.onsuccess = function(data) {
+				// App is installed, remove button
+				this.parentNode.removeChild(this);
+			};
+		
+			myapp.onerror = function() {
+				// App wasn't installed, info is in this.error.name
+				
+				
+				//custom error names!
+				
+				
+				alert('Install failed, error: ' + this.error.name);
+			};
+		};
+		
+		// get a reference to the button and call install() on click
+		var button = document.getElementById( 'install' );
+		button.addEventListener( 'click', install, false);
+	}
+};
+
 //cookies - http://www.quirksmode.org/js/cookies.html
 function createCookie(name,value,days) {
 	if (days) {

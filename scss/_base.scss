@@ -253,12 +253,13 @@ BUTTONS
 *********************/
 
 .button, .button:visited {
-	padding:.6em .8em 0.76em  0.8em;
+	padding:.6em 1.2em 0.76em  1.2em;
 	display: inline-block;
 	font-weight: bold;
 	text-decoration: none;
 	text-align:center;
 	margin-bottom:0.5em;
+	font-size:110%;
 
 	cursor: pointer;
 	background:$red;

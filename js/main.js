@@ -388,9 +388,6 @@ $( '.button.generate').tap( function() {
 jQuery(document).ready(function($) {
 	$( 'h2' ).text( generateName() );
 	
-	console.log( getCombs() );
+	//console.log( getCombs() );
+	doFirefoxButtonStuff();
 });
-
-function wut() {
-	alert( 'firefox' );
-}

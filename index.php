@@ -42,18 +42,6 @@
 		<?php //or, set /favicon.ico for IE10 win ?>
 		<meta name="msapplication-TileColor" content="#f7f7f7">
 		<meta name="msapplication-TileImage" content="/img/win8-tile-icon.png">
-		<script type="text/javascript">
-			console.log( "Don't forget to put in your Google Analytics ID" );
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-XXXXX-Y']);
-			_gaq.push(['_trackPageview']);
-			
-			(function() {
-				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			})();
-		</script>
     </head>
     <body>
 		<div class="action">
@@ -68,62 +56,22 @@
 		
 		<div class="controls">
 			<a class="button generate">
-				generate another
+				I want another.
 			</a>
 			
 			<!--firefox os install stuff-->
 			<a id="install" class="button firefoxInstall">
-				install to Firefox OS
+				Install to Firefox OS!
 			</a>
 		</div>
-		
-		
-    
-    
-    
-    
-    
+
 		<?php
 			include( 'parts/footerScripts.php' );
 			include( 'parts/diagnostic.php' );
 		?>
 		
-		
 		<script>
-			(function(){
-				alert( 'start' );
-				if( navigator.mozApps != undefined ) {
-					$( '#install' ).css( 'display', 'inline-block' );
-					
-									//alert( 'ismoz' );
-					
-					function install(ev) {
-						ev.preventDefault();
-						// define the manifest URL
-						var manifest_url = "http://bandnames.localhost/manifest.webapp";
-						// install the app
-						var myapp = navigator.mozApps.install(manifest_url);
-						
-						myapp.onsuccess = function(data) {
-							// App is installed, remove button
-							this.parentNode.removeChild(this);
-						};
-					
-						myapp.onerror = function() {
-							// App wasn't installed, info is in this.error.name
-							alert('Install failed, error: ' + this.error.name);
-						};
-					};
-					
-					// get a reference to the button and call install() on click
-					var button = document.getElementById( 'install' );
-					button.addEventListener( 'click', install, false);
-				} else {
-					wut();
-				}
-			})();
+			
 		</script>
-		
-		
     </body>
 </html>

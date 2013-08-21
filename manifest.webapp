@@ -1,15 +1,15 @@
 {
   "name": "Band Name Generator",
   "description": "Randomly generate band names",
-  "launch_path": "/bandnames",
+  "launch_path": "/",
   "icons": {
-    "128": "http://bandnames.localhost/img/icon128.png",
-    "60": "http://bandnames.localhost/img/icon60.png",
-    "30": "http://bandnames.localhost/img/icon30.png"
+    "128": "/img/icon128.png",
+    "60": "/img/icon60.png",
+    "30": "/img/icon30.png"
   },
   "developer": {
     "name": "Sebastian Lenton",
-    "url": "http://www.sebastianlenton.com"
+    "url": "http://bandnames.sebastianlenton.com"
   },
   "default_locale": "en"
 }
