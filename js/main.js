@@ -1,16 +1,24 @@
 "use strict";
 
-var prefixesSing = [ 'lord', 'mr', 'mrs', 'miss', 'king', 'queen', 'sir', 'lady', 'ms', 'master', 'captain', 'that' ];
+var blacklistAll = [ 'sonic youth', 'flaming lips', 'smashing pumpkins', 'dirty projectors', 'cold cave', 'young marble giants' ];
+
+var blacklistSingular = [ 'baroness', 'stars', 'killers', 'the killers', 'the police' ];
+
+
+
+
+
+var prefixesSing = [ 'lord', 'mr', 'mrs', 'miss', 'king', 'queen', 'sir', 'lady', 'ms', 'master', 'captain', 'that', 'every', 'just one' ];
 //noun has to be singular
 
-var prefixesPlu = [ 'we', 'we, the', 'us', 'those' ];
+var prefixesPlu = [ 'we', 'we, the', 'us', 'those', 'all the', 'many', 'lots of', 'more', 'less', 'we love', 'i love', 'remove the', 'add more' ];
 //noun has to be plural
 
-var prefixesAny = [ 'the', 'thee', 'you', 'my', 'some', 'our', 'your', 'any', 'our saviour, the' ];
+var prefixesAny = [ 'the', 'thee', 'you', 'my', 'some', 'our', 'your', 'any', 'our saviour, the', 'their', 'society\'s', 'the community\'s', 'the national', 'the only', 'my family\'s' ];
 //noun can be either (choose randomly at end)
 
 var adjectives1 = [
-	'young', 'old', 'new', 'brand new', 'original', 'hot', 'cold', 'red', 'blue', 'green', 'yellow', 'pink', 'orange', 'white', 'black', 'grey', 'slow', 'fast', 'retro', 'used'
+	'young', 'old', 'new', 'brand new', 'original', 'ultimate', 'hot', 'cold', 'crimson', 'dark', 'light', 'red', 'blue', 'green', 'yellow', 'pink', 'purple', 'orange', 'white', 'black', 'grey', 'slow', 'fast', 'retro', 'used', 'endless', 'infinite', 'current', 'huge', 'pale', 'turquoise'
 ];
 
 var adjectives2 = [
@@ -20,35 +28,46 @@ var adjectives2 = [
 	'flaming',
 	'original',
 	'marble',
-	'huge',
+	'cracked',
 	'raving',
 	'filthy',
 	'vast',
 	'tiny',
 	'electric',
+	'sexy',
 	'killer',
-	'french',
+	'soft',
+//	'french',
+//	'spanish',
+	'central',
 	'free',
 	'neon',
 	'rapid',
-	'boomtown',
+	'floating',
 	'frosty',
+	'dirty',
 	'sweaty',
 	'muscular',
 	'beautiful',
 	'pretty',
 	'sonic',
 	'smooth',
+	'cyber',
 	'ragged',
 	'young',
 	'old',
+	'powerful',
+	'concrete',
 	'gloved',
 	'oblivious',
 	'silky',
 	'imaginary',
 	'ghostly',
+	'flying',
+	'moving',
 	'invisible',
 	'noble',
+	'thoughtful',
 	'crushing',
 	'murderous',
 	'silver',
@@ -58,19 +77,34 @@ var adjectives2 = [
 	'sparkling',
 	'elderly',
 	'stinking',
+	'rolling',
+	'stone',
 	'smelly',
 	'smokey',
 	'clean',
 	'shaven',
+	'gentle',
+	'poisonous',
+	'dead',
+	'surviving',
 	'hairy',
+	'chocolate',
 	'propulsive',
 	'cold',
+	'serene',
+	'heavenly',
 	'ripped',
 	'grand',
 	'shiny',
 	'lucky',
 	'friendly',
+	'strong',
+	'legal',
+	'simple',
+	'municipal',
+	'reflective',
 	'royal',
+	'glittering',
 	'legendary',
 	'obedient',
 	'raw',
@@ -78,12 +112,14 @@ var adjectives2 = [
 	'howling',
 	'wild',
 	'sleepy',
+	'historic'
 ];
 
 var nouns = [
 	[ 'bee' ],
+	[ 'machine' ],
+	[ 'crystal' ],
 	[ 'cloud' ],
-	[ 'spaniard' ],
 	[ 'cowboy' ],
 	[ 'criminal' ],
 	[ 'painter' ],
@@ -92,21 +128,33 @@ var nouns = [
 	[ 'dancer' ],
 	[ 'killer' ],
 	[ 'cow' ],
+	[ 'video' ],
 	[ 'cave' ],
 	[ 'dog' ],
 	[ 'lip' ],
+	[ 'nothing' ],
 	[ 'pumpkin' ],
 	[ 'giant' ],
 	[ 'prune' ],
-	[ 'indian' ],
 	[ 'bull' ],
 	[ 'monk' ],
 	[ 'rat' ],
+	[ 'book' ],
+	[ 'holiday' ],
+	[ 'saint' ],
+	[ 'airport' ],
+	[ 'triangle' ],
+	[ 'citizen' ],
 	[ 'ghost' ],
+	[ 'spider' ],
+	[ 'boat' ],
+	[ 'layer' ],
+	[ 'nail' ],
 	[ 'barnacle' ],
 	[ 'design' ],
 	[ 'kitten' ],
 	[ 'radio' ],
+	[ 'warrior' ],
 	[ 'bell' ],
 	[ 'ballerina' ],
 	[ 'dinosaur' ],
@@ -116,11 +164,16 @@ var nouns = [
 	[ 'panda' ],
 	[ 'trooper' ],
 	[ 'soldier' ],
+	[ 'republic' ],
 	[ 'owl' ],
+	[ 'banquet' ],
 	[ 'baron' ],
+	[ 'photograph' ],
+	[ 'projector' ],
 	[ 'clam' ],
 	[ 'hexagon' ],
 	[ 'jetpack' ],
+	[ 'german' ],
 	[ 'starship' ],
 	[ 'palace' ],
 	[ 'mind' ],
@@ -128,13 +181,16 @@ var nouns = [
 	[ 'friend' ],
 	[ 'lover' ],
 	[ 'brother' ],
+	[ 'hifi' ],
 	[ 'sister' ],
 	[ 'mother' ],
 	[ 'cat' ],
 	[ 'father' ],
 	[ 'boyfriend' ],
+	[ 'boy' ],
 	[ 'girlfriend' ],
 	[ 'housemate' ],
+	[ 'uncle' ],
 	[ 'priest' ],
 	[ 'god' ],
 	[ 'wizard' ],
@@ -146,12 +202,16 @@ var nouns = [
 	[ 'field' ],
 	[ 'engine' ],
 	[ 'sword' ],
+	[ 'sun' ],
 	[ 'sunset' ],
 	[ 'star' ],
 	[ 'agent' ],
 	[ 'gun' ],
+	[ 'elevator' ],
+	[ 'canyon' ],
 	[ 'head' ],
 	[ 'leg' ],
+	[ 'poet' ],
 	[ 'bike' ],
 	[ 'mortal' ],
 	[ 'fighter' ],
@@ -163,49 +223,91 @@ var nouns = [
 	[ 'eagle' ],
 	[ 'falcon' ],
 	[ 'bear' ],
+	[ 'sprout' ],
 	[ 'acrobat' ],
 	[ 'kid' ],
 	[ 'robot' ],
+	[ 'seahorse' ],
 	[ 'goat' ],
 	[ 'youth' ],
+	[ 'doctor' ],
+	[ 'eye' ],
 	[ 'girl' ],
 	[ 'twin' ],
-	[ 'cripple' ],
 	[ 'flower' ],
 	[ 'crayon' ],
 	[ 'lollipop' ],
+	[ 'aeroplane' ],
+	[ 'scientist' ],
 	[ 'umbrella' ],
+	[ 'gymnast' ],
+	[ 'signal' ],
+	[ 'death' ],
+	[ 'demon' ],
+	[ 'vapour' ],
+	[ 'dream' ],
+	[ 'cop' ],
+	[ 'punk' ],
+	[ 'shoe' ],
+	[ 'computer' ],
+	[ 'lake' ],
+	[ 'devil' ],
+	[ 'angel' ],
+	[ 'wasp' ],
+	[ 'bat' ],
+	[ 'castle' ],
+	[ 'skull' ],
+	[ 'heaven', 'heaven' ],
+	[ 'hell', 'hell' ],
+	[ 'bread', 'bread' ],
 	[ 'police', 'police' ],
+	[ 'snow', 'snow' ],
 	[ '60s', '60s' ],
 	[ '70s', '70s' ],
 	[ '80s', '80s' ],
 	[ '90s', '90s' ],
+	
+	[ 'puppy', 'puppies' ],
+	[ 'voice', 'voices' ],
+	[ 'cherry', 'cherries' ],
+	[ 'baby', 'babies' ],
 	[ 'fish', 'fishes' ],
+	[ 'spy', 'spies' ],
 	[ 'child', 'children' ],
 	[ 'woman', 'women' ],
 	[ 'elf', 'elves' ],
 	[ 'dwarf', 'dwarves' ],
 	[ 'popcorn', 'popcorn' ],
 	[ 'city', 'cities' ],
+	[ 'boombox', 'boomboxes' ],
 	[ 'fortress', 'fortresses' ],
 	[ 'octopus', 'octopuses' ],
 	[ 'house', 'houses' ],
 	[ 'baroness', 'baronesses' ],
 	[ 'man', 'men' ],
+	[ 'sportsman', 'sportsmen' ],
+	[ 'sportswoman', 'sportswomen' ],
+	[ 'businessman', 'businessmen' ],
+	[ 'businesswoman', 'businesswomen' ],
 	[ 'person', 'people' ],
-	[ 'frenchman', 'frenchmen' ],
 	[ 'fox', 'foxes' ],
 	[ 'spaceman', 'spacemen' ],
 	[ 'beach', 'beaches' ],
 	[ 'furnace', 'furnaces' ],
 	[ 'fireman', 'firemen' ],
+	[ 'horse', 'horses' ],
+	[ 'horsewoman', 'horsewomen' ],
 	[ 'horseman', 'horsemen' ],
 	[ 'bitch', 'bitches' ]
 ];
 
 function getCombs() {
-	//note this is completely inaccurate of the real combinations
-	return ( prefixesSing.length * adjectives1.length * adjectives2.length * nouns.length ) * 2;
+	//note these are completely inaccurate of the real combinations
+	//return ( prefixesSing.length * adjectives1.length * adjectives2.length * nouns.length ) * 2;
+	console.log( 'adjectives2: ' + adjectives2.length );
+	console.log( 'nouns: ' + nouns.length );
+	
+	return ( adjectives2.length * nouns.length );
 }
 
 function getPlularity() {
@@ -249,7 +351,7 @@ function getNounPluralised( word, pluralise ) {
 	return wordPluralised;
 };
 
-function generateName() {										//don't think there's a "no prefix" option
+function generateName() {
 	var isPlural = getPlularity();
 
 	var words = [];
@@ -270,7 +372,7 @@ function generateName() {										//don't think there's a "no prefix" option
 		} else {
 			console.log( 'something terrible has happened in adding prefix' );
 		}
-	} else if( getRandomNum( 3 ) == 1 ) {
+	} else if( getRandomNum( 10 ) > 4 ) {
 		words.push( 'the' );
 	}
 	
@@ -289,8 +391,13 @@ function generateName() {										//don't think there's a "no prefix" option
 	return loopArrayString( words );
 }
 
+//interaction stuff
+$( '.button.generate').click( function() {
+	$( 'h2' ).text( generateName() );
+});
+
 jQuery(document).ready(function($) {
-	$( 'h2' ).text(generateName());
+	$( 'h2' ).text( generateName() );
 	
 	console.log( getCombs() );
 });
