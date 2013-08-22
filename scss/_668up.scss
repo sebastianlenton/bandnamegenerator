@@ -17,15 +17,16 @@ LAYOUT & GRID STYLES
 *********************/
 
 .action {
-	min-height:7em;
+//	min-height:7em;
 }
 
 /*********************
 TYPE
 *********************/
-h1 {
-	margin-bottom:0.5em;
+h1,.h1 {
+	font-size:0.65em;
 }
+
 h2 {
 	padding:0 10%;
 }

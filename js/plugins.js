@@ -1,18 +1,20 @@
 //firefox OS app stuff
 function checkIsInstalled( manifest ) {
-	var request = navigator.mozApps.checkInstalled( manifest );
-	
-	request.onerror = function(e) {
-		alert("Error calling checkInstalled: " + request.error.name);
-	};
-	request.onsuccess = function(e) {
-		if ( !request.result ) {
-			//alert( 'not installed' );
-			doFirefoxButtonStuff( manifest );
-		} else {
-			//alert( 'is installed' );
-		}
-	};
+	if( navigator.mozApps != undefined ) {
+		var request = navigator.mozApps.checkInstalled( manifest );
+		
+		request.onerror = function(e) {
+			alert("Error calling checkInstalled: " + request.error.name);
+		};
+		request.onsuccess = function(e) {
+			if ( !request.result ) {
+				//alert( 'not installed' );
+				doFirefoxButtonStuff( manifest );
+			} else {
+				//alert( 'is installed' );
+			}
+		};
+	}
 }
 
 function doFirefoxButtonStuff( manifest ){

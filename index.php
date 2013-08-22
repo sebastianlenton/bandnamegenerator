@@ -31,8 +31,6 @@
 				}
 			</style>
 		<![endif]-->
-
-        <script src="js/libs/modernizr-2.6.2.min.js"></script>
         
 		<link rel="apple-touch-icon" href="/img/apple-icon-touch.png">
 		<link rel="icon" href="/img/favicon.png">
@@ -58,12 +56,12 @@
 			<a class="button generate">
 				I want another.
 			</a>
-			
 			<!--firefox os install stuff-->
 			<a id="install" class="button firefoxInstall">
 				Install to Firefox OS!
 			</a>
 		</div>
+		<p class="h1">a small app by <a href="http://www.sebastianlenton.com">Sebastian Lenton</a>
 
 		<?php
 			include( 'parts/footerScripts.php' );
