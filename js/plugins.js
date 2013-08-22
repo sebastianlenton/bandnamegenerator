@@ -1,21 +1,38 @@
-function doFirefoxButtonStuff(){
-	if( navigator.mozApps != undefined ) {
+//firefox OS app stuff
+function checkIsInstalled( manifest ) {
+	var request = navigator.mozApps.checkInstalled( manifest );
+	
+	request.onerror = function(e) {
+		alert("Error calling checkInstalled: " + request.error.name);
+	};
+	request.onsuccess = function(e) {
+		if ( !request.result ) {
+			//alert( 'not installed' );
+			doFirefoxButtonStuff( manifest );
+		} else {
+			//alert( 'is installed' );
+		}
+	};
+}
+
+function doFirefoxButtonStuff( manifest ){
+	if( navigator.mozApps != undefined ) {									//if its a firefox os supporting environment
 		$( "#install" ).css( "display", "inline-block" );
 		function install(ev) {
 			ev.preventDefault();
 			// define the manifest URL
-			var manifest_url = "http://bandnames.sebastianlenton.com/manifest.webapp";
+			var manifest_url = manifest;//"http://bandnames.sebastianlenton.com/manifest.webapp";
 			// install the app
 			var myapp = navigator.mozApps.install(manifest_url);
 			
 			myapp.onsuccess = function(data) {
 				// App is installed, remove button
+				$( "#install" ).remove();
 				this.parentNode.removeChild(this);
 			};
 		
 			myapp.onerror = function() {
 				// App wasn't installed, info is in this.error.name
-				//custom error names!
 				if( this.error.name == "REINSTALL_FORBIDDEN" ) {
 					alert( "You've already installed this.");
 				} else {
@@ -27,9 +44,12 @@ function doFirefoxButtonStuff(){
 		// get a reference to the button and call install() on click
 		var button = document.getElementById( 'install' );
 		button.addEventListener( 'click', install, false);
+	} else {
+		alert( 'checkinstalled says is installed' );
 	}
 };
 
+//boilerplate-y stuff
 //cookies - http://www.quirksmode.org/js/cookies.html
 function createCookie(name,value,days) {
 	if (days) {

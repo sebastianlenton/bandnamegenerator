@@ -65,6 +65,9 @@ var adjectives2 = [
 	'hot',
 	'fiery',
 	'sparkling',
+	'golden',
+	'massive',
+	'colossal',
 	'elderly',
 	'stinking',
 	'rolling',
@@ -295,8 +298,6 @@ function getCombs() {
 	//return ( prefixesSing.length * adjectives1.length * adjectives2.length * nouns.length ) * 2;
 	console.log( 'adjectives2: ' + adjectives2.length );
 	console.log( 'nouns: ' + nouns.length );
-	
-	return ( adjectives2.length * nouns.length );
 }
 
 function getPlularity() {
@@ -388,6 +389,5 @@ $( '.button.generate').tap( function() {
 jQuery(document).ready(function($) {
 	$( 'h2' ).text( generateName() );
 	
-	//console.log( getCombs() );
-	doFirefoxButtonStuff();
+	checkIsInstalled( "http://bandnames.sebastianlenton.com/manifest.webapp" );
 });
