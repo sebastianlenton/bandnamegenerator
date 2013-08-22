@@ -1,6 +1,6 @@
 "use strict";
 
-var prefixesSing = [ 'lord', 'mr', 'mrs', 'miss', 'king', 'queen', 'sir', 'lady', 'ms', 'master', 'captain', 'that', 'every', 'just one' ];
+var prefixesSing = [ 'lord', 'mr', 'mrs', 'miss', 'king', 'queen', 'sir', 'lady', 'ms', 'master', 'i,', 'captain', 'that', 'every', 'just one' ];
 //noun has to be singular
 
 var prefixesPlu = [ 'we', 'we, the', 'us', 'those', 'all the', 'many', 'lots of', 'more', 'less', 'we love', 'i love', 'remove the', 'add more' ];
@@ -291,7 +291,7 @@ var nouns = [
 ];
 
 function getCombs() {
-	//note these are completely inaccurate of the real combinations
+	//note these are completely inaccurate to the real number of combinations
 	//return ( prefixesSing.length * adjectives1.length * adjectives2.length * nouns.length ) * 2;
 	console.log( 'adjectives2: ' + adjectives2.length );
 	console.log( 'nouns: ' + nouns.length );

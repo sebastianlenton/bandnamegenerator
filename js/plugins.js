@@ -1,6 +1,6 @@
 function doFirefoxButtonStuff(){
 	if( navigator.mozApps != undefined ) {
-		$( '#install' ).css( 'display', 'inline-block' );
+		$( "#install" ).css( "display", "inline-block" );
 		function install(ev) {
 			ev.preventDefault();
 			// define the manifest URL
@@ -15,12 +15,12 @@ function doFirefoxButtonStuff(){
 		
 			myapp.onerror = function() {
 				// App wasn't installed, info is in this.error.name
-				
-				
 				//custom error names!
-				
-				
-				alert('Install failed, error: ' + this.error.name);
+				if( this.error.name == "REINSTALL_FORBIDDEN" ) {
+					alert( "You've already installed this.");
+				} else {
+					alert('Install failed, error: ' + this.error.name);	
+				}
 			};
 		};
 		
