@@ -9,7 +9,15 @@
         <title>Band name Generator</title>
         <meta name="description" content="">
         
-<!--		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
+        <link rel="canonical" href="http://bandnames.sebastianlenton.com/" />
+		<meta property='og:locale' content='en_GB'/>
+		<meta property='og:type' content='website'/>
+		<meta property='og:title' content='Band Name Generator'/>
+		<meta property='og:description' content='Quickly need a name for your new band? Use this handy band name generator!'/>
+		<meta property='og:url' content='http://bandnames.sebastianlenton.com/'/>
+		<meta property='og:site_name' content='Band Name Generator'/>
+		<meta property='fb:admins' content='551373383'/>
+		<meta property='og:image' content='http://bandnames.sebastianlenton.com/img/fbImg.png'/>
         
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="apple-mobile-web-app-capable" content="yes">
